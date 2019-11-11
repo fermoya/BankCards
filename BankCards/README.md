@@ -1,2 +1,0 @@
-# BankCards
- SwiftUI test
