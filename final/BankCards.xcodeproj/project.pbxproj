@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1724D0B6237B3DF100E35AF1 /* CardBrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1724D0B5237B3DF100E35AF1 /* CardBrand.swift */; };
+		1724D0B8237B3E0000E35AF1 /* CardBrand+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1724D0B7237B3E0000E35AF1 /* CardBrand+SwiftUI.swift */; };
+		1724D0BA237B3E3000E35AF1 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1724D0B9237B3E3000E35AF1 /* Wallet.swift */; };
 		17E1E488237858D00068F4F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1E487237858D00068F4F9 /* AppDelegate.swift */; };
 		17E1E48A237858D00068F4F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1E489237858D00068F4F9 /* SceneDelegate.swift */; };
 		17E1E48C237858D00068F4F9 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E1E48B237858D00068F4F9 /* WalletView.swift */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1724D0B5237B3DF100E35AF1 /* CardBrand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBrand.swift; sourceTree = "<group>"; };
+		1724D0B7237B3E0000E35AF1 /* CardBrand+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardBrand+SwiftUI.swift"; sourceTree = "<group>"; };
+		1724D0B9237B3E3000E35AF1 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		17E1E484237858D00068F4F9 /* BankCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BankCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E1E487237858D00068F4F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17E1E489237858D00068F4F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				17E1E49F237859330068F4F9 /* Card.swift */,
+				1724D0B5237B3DF100E35AF1 /* CardBrand.swift */,
+				1724D0B7237B3E0000E35AF1 /* CardBrand+SwiftUI.swift */,
+				1724D0B9237B3E3000E35AF1 /* Wallet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,11 +177,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1724D0BA237B3E3000E35AF1 /* Wallet.swift in Sources */,
 				17E1E488237858D00068F4F9 /* AppDelegate.swift in Sources */,
 				17E1E48A237858D00068F4F9 /* SceneDelegate.swift in Sources */,
 				17E1E4A0237859330068F4F9 /* Card.swift in Sources */,
 				17E1E49D237858FB0068F4F9 /* CardView.swift in Sources */,
 				17E1E48C237858D00068F4F9 /* WalletView.swift in Sources */,
+				1724D0B6237B3DF100E35AF1 /* CardBrand.swift in Sources */,
+				1724D0B8237B3E0000E35AF1 /* CardBrand+SwiftUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

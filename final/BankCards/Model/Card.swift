@@ -8,44 +8,6 @@
 
 import Foundation
 
-enum CardBrand {
-    case visa
-    case mastercard
-    case americanExpress
-    case maestro
-}
-
-struct Card: Identifiable, Equatable {
-    
-    static let aspectRatio: Double = 16 / 9
-    
-    var id: String {
-        return number
-    }
-    
-    var number: String
-    var holderName: String
-    var expiration: String
-    var brand: CardBrand
-    
-}
-
-class Wallet: ObservableObject {
-    @Published var cards: [Card]
-        
-    init(cards: [Card]) {
-        self.cards = cards.reversed()
-    }
-    
-    func index(of card: Card) -> Int {
-        return cards.count - cards.firstIndex(of: card)! - 1
-    }
-    
-    func isFirst(card: Card) -> Bool {
-        return index(of: card) == 0
-    }
-}
-
 let cards = [
     Card(number: "4761 \t1200 \t1000 \t0492",
          holderName: "F. MOYA DE RIVAS",
@@ -64,3 +26,18 @@ let cards = [
          expiration: "03/20",
          brand: .americanExpress)
 ]
+
+struct Card: Identifiable, Equatable {
+    
+    static let aspectRatio: Double = 16 / 9
+    
+    var id: String {
+        return number
+    }
+    
+    var number: String
+    var holderName: String
+    var expiration: String
+    var brand: CardBrand
+    
+}
