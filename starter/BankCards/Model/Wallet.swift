@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Wallet: ObservableObject {
-    @Published var cards: [Card]
+class Wallet {
+    var cards: [Card]
         
     init(cards: [Card]) {
         self.cards = cards.reversed()
