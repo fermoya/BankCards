@@ -23,6 +23,7 @@ struct WalletView: View {
     @State var isDragging: Bool = false
     @State var firstCardScale: CGFloat = Self.cardScaleWhenDragginDown
     @State var isPresented = false
+    @State var shouldDelay = true
 
     var body: some View {
         GeometryReader { geometry in
@@ -39,23 +40,28 @@ struct WalletView: View {
                             .gesture(
                                 DragGesture()
                                     .onChanged({ (value) in
-                                        self.dragGestureDidChange(value: value, geometry: geometry)
+                                        self.dragGestureDidChange(value: value,
+                                                                  card: card,
+                                                                  geometry: geometry)
                                     })
                                     .onEnded({ (value) in
                                         self.dragGestureDidEnd(value: value,
                                                                card: card,
                                                                geometry: geometry)
                                     }))
-                            .disabled(!self.wallet.isFirst(card: card))
+                            .onTapGesture {
+                                    let newCards = self.wallet.cards.filter { $0 != card } + [card]
+                                    self.wallet.cards = newCards
+                            }
                             .transition(.moveUpWardsWhileFadingIn)
                             .animation(Animation.easeOut.delay(self.transitionDelay(card: card)))
+                    }.onAppear {
+                        self.shouldDelay = false
                     }
                 }
             }
             .onAppear {
-                withAnimation {
                     self.isPresented.toggle()
-                }
             }
             .padding(.horizontal, Self.padding)
         }
@@ -66,20 +72,18 @@ struct WalletView: View {
 
 extension WalletView {
     
-    func dragGestureDidChange(value: DragGesture.Value, geometry: GeometryProxy) {
-        withAnimation {
+    func dragGestureDidChange(value: DragGesture.Value, card: Card, geometry: GeometryProxy) {
+        guard wallet.isFirst(card: card) else { return }
             draggingOffset = value.translation.height
             isDragging = true
             firstCardScale = newFirstCardScale(geometry: geometry)
-        }
     }
     
     func dragGestureDidEnd(value: DragGesture.Value, card: Card, geometry: GeometryProxy) {
-        withAnimation {
+        guard wallet.isFirst(card: card) else { return }
             draggingOffset = 0
             wallet.cards = cardsResortedAfterTranslation(draggedCard: card, yTranslation: value.translation.height, geometry: geometry)
             isDragging = false
-        }
     }
     
 }
@@ -109,6 +113,7 @@ extension WalletView {
     }
     
     private func transitionDelay(card: Card) -> Double {
+        guard shouldDelay else { return 0 }
         return Double(wallet.index(of: card)) * Self.cardTransitionDelay
     }
     

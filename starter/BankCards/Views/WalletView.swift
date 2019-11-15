@@ -22,6 +22,7 @@ struct WalletView: View {
     var draggingOffset: CGFloat = 0
     var isDragging: Bool = false
     var firstCardScale: CGFloat = Self.cardScaleWhenDragginDown
+    var shouldDelay = true
     
     var body: some View {
         GeometryReader { geometry in
@@ -65,6 +66,7 @@ extension WalletView {
     }
     
     private func transitionDelay(card: Card) -> Double {
+        guard shouldDelay else { return 0 }
         return Double(wallet.index(of: card)) * Self.cardTransitionDelay
     }
     
